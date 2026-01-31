@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aprenda Português Online - Aulas 100% ao vivo e personalizadas. Do básico ao avançado com método dinâmico e resultados reais.">
+    <title>Aprenda Português Online - Aulas Personalizadas ao Vivo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #6c5ce7;
+            --primary-green: #00b286;
+            --primary-dark: #2b3749;
+            --gradient: linear-gradient(135deg, #6c5ce7 0%, #00b286 100%);
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --text-dark: #2b3749;
+            --text-gray: #5a6c7d;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* Header/Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 30px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-cta {
+            background: var(--gradient);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            padding: 140px 2rem 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="rgba(255,255,255,0.05)"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-highlight {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .cta-primary {
+            background: white;
+            color: var(--primary-purple);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+        }
+
+        .trust-badges {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .badge-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 4rem 2rem;
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-card {
+            padding: 2rem;
+            border-radius: 15px;
+            background: var(--light-bg);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-weight: 600;
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: 5rem 2rem;
+            background: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+        }
+
+        .problem-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .problem-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .problem-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Pillars Section */
+        .pillars {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .pillar-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .pillar-card:hover {
+            border-color: var(--primary-purple);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(108, 92, 231, 0.2);
+        }
+
+        .pillar-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .pillar-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .pillar-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .pillar-card p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .pillar-features {
+            list-style: none;
+        }
+
+        .pillar-features li {
+            padding: 0.6rem 0;
+            color: var(--text-gray);
+            display: flex;
+            align-items: start;
+            gap: 0.8rem;
+        }
+
+        .pillar-features li::before {
+            content: '✓';
+            color: var(--primary-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Differentials Section */
+        .differentials {
+            padding: 5rem 2rem;
+            background: var(--gradient);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .differentials::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 60%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .differentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .differential-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .differential-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .differential-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .differential-item h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .differential-item p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 2rem;
+            background: var(--light-bg);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 3rem;
+            color: var(--primary-purple);
+            opacity: 0.1;
+        }
+
+        .testimonial-text {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .author-info h5 {
+            color: var(--text-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .stars {
+            color: #ffc107;
+            margin-bottom: 1rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 3rem 2.5rem;
+            border-radius: 25px;
+            text-align: center;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary-purple);
+            transform: scale(1.05);
+            box-shadow: 0 15px 60px rgba(108, 92, 231, 0.3);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .pricing-duration {
+            color: var(--primary-purple);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-description {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.8rem 0;
+            color: var(--text-gray);
+            display: flex;
+            align-items: start;
+            gap: 0.8rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--primary-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .pricing-cta {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.3);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 2rem;
+            background: var(--gradient);
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button-primary {
+            background: white;
+            color: var(--primary-purple);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .cta-button-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+        }
+
+        .cta-button-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button-secondary:hover {
+            background: white;
+            color: var(--primary-purple);
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .faq-item {
+            background: var(--light-bg);
+            margin-bottom: 1.5rem;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-dark);
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            color: var(--primary-purple);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 0 2rem 1.5rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6c5ce7 0%, #00b286 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: var(--primary-green);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary-green);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+            animation: pulse-whatsapp 2s infinite;
+        }
+
+        @keyframes pulse-whatsapp {
+            0% {
+                box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 5px 30px rgba(37, 211, 102, 0.6);
+                transform: scale(1.05);
+            }
+            100% {
+                box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-cta {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .cta-primary {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+
+            .trust-badges {
+                gap: 1.5rem;
+            }
+
+            .pillars-grid,
+            .differentials-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">Aprenda Português Online</div>
+            <a href="https://wa.me/5562982329803?text=Olá!%20Gostaria%20de%20agendar%20uma%20aula%20experimental%20gratuita!" class="nav-cta" target="_blank">
+                📱 Aula Experimental Grátis
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in-up">Domine o Português com Aulas 100% ao Vivo e Personalizadas</h1>
+            <p class="hero-subtitle">Do básico ao avançado com método dinâmico que respeita seu ritmo de aprendizado</p>
+            <div class="hero-highlight">
+                ✨ Aulas individuais • Horários flexíveis • Resultados reais
+            </div>
+            <a href="https://wa.me/5562982329803?text=Olá!%20Gostaria%20de%20agendar%20uma%20aula%20experimental%20gratuita!" class="cta-primary" target="_blank">
+                <span>📚 Agende Sua Aula Experimental</span>
+                <span style="font-size: 1.5rem;">→</span>
+            </a>
+            <div class="trust-badges">
+                <div class="badge">
+                    <span class="badge-icon">🎯</span>
+                    <span>100% Personalizado</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">🎥</span>
+                    <span>Aulas ao Vivo</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">⏰</span>
+                    <span>Horários Flexíveis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Aulas ao Vivo</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1:1</div>
+                <div class="stat-label">Totalmente Individual</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5+</div>
+                <div class="stat-label">Anos de Idade</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Flexibilidade</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">O Problema</span>
+                <h2 class="section-title">Por Que Muitos Lutam com o Português?</h2>
+                <p class="section-subtitle">Identificamos as principais dificuldades e criamos uma solução personalizada para cada aluno</p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">😓</div>
+                    <h3>Aulas Gravadas Monótonas</h3>
+                    <p>Cursos online genéricos que não tiram suas dúvidas em tempo real e fazem você perder tempo com conteúdo que não precisa.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">👥</div>
+                    <h3>Turmas Grandes e Impessoais</h3>
+                    <p>Impossível receber atenção individualizada quando há dezenas de alunos competindo pela atenção do professor.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">⏰</div>
+                    <h3>Horários Inflexíveis</h3>
+                    <p>Sua rotina é corrida e os cursos tradicionais não se adaptam às suas necessidades de tempo.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">📚</div>
+                    <h3>Métodos Rígidos e Padronizados</h3>
+                    <p>Todo mundo aprende diferente, mas os cursos tratam todos da mesma forma, ignorando seu nível e objetivos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pillars Section -->
+    <section class="pillars">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nossa Metodologia</span>
+                <h2 class="section-title">Os 4 Pilares do Aprendizado Efetivo</h2>
+                <p class="section-subtitle">Uma abordagem completa e personalizada que garante resultados reais</p>
+            </div>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-number">1</div>
+                    <h3>Do Básico ao Avançado</h3>
+                    <p>Desenvolvimento completo da língua portuguesa, respeitando seu nível e avançando de forma progressiva.</p>
+                    <ul class="pillar-features">
+                        <li>Base gramatical sólida</li>
+                        <li>Aprofundamento gradual</li>
+                        <li>Aperfeiçoamento contínuo</li>
+                    </ul>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-number">2</div>
+                    <h3>Método Dinâmico e Acessível</h3>
+                    <p>Aulas práticas, interativas e personalizadas que facilitam o aprendizado.</p>
+                    <ul class="pillar-features">
+                        <li>Exercícios práticos imediatos</li>
+                        <li>Leitura guiada personalizada</li>
+                        <li>Explicações simples e claras</li>
+                        <li>Acompanhamento contínuo</li>
+                    </ul>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-number">3</div>
+                    <h3>Reforço Escolar + Gramática</h3>
+                    <p>Fortalecimento dos conteúdos escolares e domínio das regras da língua portuguesa.</p>
+                    <ul class="pillar-features">
+                        <li>Acentuação e ortografia</li>
+                        <li>Concordância verbal e nominal</li>
+                        <li>Tempos verbais detalhados</li>
+                        <li>Correção de erros comuns</li>
+                    </ul>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-number">4</div>
+                    <h3>Leitura, Redação e Concursos</h3>
+                    <p>Desenvolvimento da compreensão textual, escrita clara e preparação para provas.</p>
+                    <ul class="pillar-features">
+                        <li>Leituras assistidas adaptadas</li>
+                        <li>Produção de textos diversos</li>
+                        <li>Interpretação avançada</li>
+                        <li>Técnicas de redação eficazes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentials Section -->
+    <section class="differentials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="color: white;">O Que Nos Torna Únicos</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Diferenciais que transformam seu aprendizado</p>
+            </div>
+            <div class="differentials-grid">
+                <div class="differential-item">
+                    <div class="differential-icon">🎯</div>
+                    <h4>100% Personalizado</h4>
+                    <p>Cada aula é criada especificamente para você, seu nível e seus objetivos</p>
+                </div>
+                <div class="differential-item">
+                    <div class="differential-icon">🎥</div>
+                    <h4>Aulas ao Vivo</h4>
+                    <p>Interação em tempo real, tire dúvidas na hora e aprenda muito mais rápido</p>
+                </div>
+                <div class="differential-item">
+                    <div class="differential-icon">⏰</div>
+                    <h4>Horários Flexíveis</h4>
+                    <p>Você escolhe os melhores dias e horários que se encaixam na sua rotina</p>
+                </div>
+                <div class="differential-item">
+                    <div class="differential-icon">📝</div>
+                    <h4>Feedbacks Escritos</h4>
+                    <p>Acompanhe sua evolução com feedbacks detalhados após cada aula</p>
+                </div>
+                <div class="differential-item">
+                    <div class="differential-icon">🎮</div>
+                    <h4>Jogos Pedagógicos</h4>
+                    <p>Aprenda brincando com atividades lúdicas integradas às aulas</p>
+                </div>
+                <div class="differential-item">
+                    <div class="differential-icon">🚀</div>
+                    <h4>Sem Prazo Fixo</h4>
+                    <p>Avance no seu ritmo, sem pressão de prazos artificiais</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Depoimentos</span>
+                <h2 class="section-title">O Que Nossos Alunos Dizem</h2>
+                <p class="section-subtitle">Resultados reais de quem aprendeu conosco</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"As aulas individuais fizeram toda a diferença! Finalmente consigo entender gramática de verdade. A professora adapta tudo ao meu ritmo e sempre tira minhas dúvidas na hora."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MC</div>
+                        <div class="author-info">
+                            <h5>Maria Clara</h5>
+                            <p>Estudante • 16 anos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Minha filha melhorou muito as notas em português! O método é dinâmico e ela ama as aulas. A flexibilidade de horários nos ajudou muito com a rotina corrida."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AS</div>
+                        <div class="author-info">
+                            <h5>Ana Silva</h5>
+                            <p>Mãe de aluna • 9 anos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Estou me preparando para concursos e as aulas são extremamente focadas no que eu preciso. Material personalizado, exercícios direcionados e feedback constante. Recomendo!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RL</div>
+                        <div class="author-info">
+                            <h5>Roberto Lima</h5>
+                            <p>Concurseiro • 32 anos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Investimento</span>
+                <h2 class="section-title">Planos Personalizados Para Você</h2>
+                <p class="section-subtitle">Escolha a modalidade que melhor se encaixa na sua necessidade</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-duration">⏱️ Aula de 45 Minutos</div>
+                    <div class="pricing-price">R$ 120</div>
+                    <p class="pricing-description">Ideal para reforço pontual e revisões focadas</p>
+                    <ul class="pricing-features">
+                        <li>Aula 100% ao vivo e individual</li>
+                        <li>Conteúdo personalizado</li>
+                        <li>Horário flexível</li>
+                        <li>Feedback após a aula</li>
+                        <li>Suporte via WhatsApp</li>
+                    </ul>
+                    <a href="https://wa.me/5562982329803?text=Olá!%20Tenho%20interesse%20nas%20aulas%20de%2045%20minutos." class="pricing-cta" target="_blank">Quero Esta Modalidade</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">⭐ Mais Popular</div>
+                    <div class="pricing-duration">🎯 Aula de 1 Hora</div>
+                    <div class="pricing-price">R$ 140</div>
+                    <p class="pricing-description">Melhor custo-benefício com materiais inclusos</p>
+                    <ul class="pricing-features">
+                        <li>Aula 100% ao vivo e individual</li>
+                        <li>Conteúdo personalizado completo</li>
+                        <li>Horário totalmente flexível</li>
+                        <li>Materiais das aulas inclusos (PDFs, slides, exercícios)</li>
+                        <li>Feedback escrito detalhado</li>
+                        <li>Suporte via WhatsApp prioritário</li>
+                        <li>Leitura guiada personalizada</li>
+                    </ul>
+                    <a href="https://wa.me/5562982329803?text=Olá!%20Tenho%20interesse%20nas%20aulas%20de%201%20hora%20com%20materiais." class="pricing-cta" target="_blank">Escolher Este Plano</a>
+                </div>
+            </div>
+            <p style="text-align: center; color: var(--text-gray); margin-top: 2rem; font-size: 0.95rem;">
+                💳 Pagamento via PIX • 📄 Recibo fornecido • 🎁 Primeira aula experimental gratuita
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Pronto Para Dominar o Português de Verdade?</h2>
+            <p>Agende agora sua aula experimental gratuita e descubra como aulas personalizadas podem transformar seu aprendizado</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/5562982329803?text=Olá!%20Gostaria%20de%20agendar%20minha%20aula%20experimental%20gratuita!" class="cta-button-primary" target="_blank">
+                    📚 Agendar Aula Experimental Grátis
+                </a>
+                <a href="mailto:aportuguesonline@gmail.com" class="cta-button-secondary">
+                    ✉️ Enviar E-mail
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Dúvidas Frequentes</span>
+                <h2 class="section-title">Perguntas e Respostas</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Como funcionam as aulas ao vivo?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            As aulas são realizadas via Google Meet, 100% individuais e ao vivo. Você interage em tempo real com a professora, tira dúvidas na hora e recebe atenção totalmente personalizada. Nada de vídeos gravados ou turmas grandes!
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Posso escolher meus horários?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Sim! Total flexibilidade. Você agenda suas aulas nos dias e horários que melhor se encaixam na sua rotina. Trabalhamos de acordo com sua disponibilidade.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Quais materiais estão inclusos?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Nas aulas de 1 hora, todos os materiais estão inclusos: slides personalizados, PDFs educativos, exercícios práticos e textos para leitura guiada. Tudo organizado via Google Sala de Aula para fácil acesso.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Aceita alunos de todas as idades?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Sim! Atendemos desde crianças a partir de 5 anos até adultos, incluindo preparação para concursos. Cada aula é adaptada à faixa etária e objetivos específicos do aluno.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Como funciona a aula experimental?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            A primeira aula é gratuita! Nela, fazemos uma avaliação do seu nível, conhecemos seus objetivos e você experimenta nossa metodologia personalizada sem compromisso. É a melhor forma de conhecer nosso trabalho.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Qual a forma de pagamento?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Aceitamos pagamento via PIX (Banco Itaú). Após o pagamento, você recebe um recibo em PDF. Simples, rápido e seguro!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">Aprenda Português Online</div>
+                <p>Aulas 100% ao vivo e personalizadas para você dominar o português do básico ao avançado.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/aprenda_portugues_online/" class="social-link" target="_blank" title="Instagram">📷</a>
+                    <a href="https://www.facebook.com/profile.php?id=61571547343086" class="social-link" target="_blank" title="Facebook">📘</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <a href="mailto:aportuguesonline@gmail.com" class="contact-item">
+                    <span>✉️</span>
+                    <span>aportuguesonline@gmail.com</span>
+                </a>
+                <a href="https://wa.me/5562982329803" class="contact-item" target="_blank">
+                    <span>📱</span>
+                    <span>+55 (62) 98232-9803</span>
+                </a>
+                <p style="margin-top: 1rem; font-size: 0.9rem;">Atendimento via WhatsApp de segunda a sexta, das 8h às 20h</p>
+            </div>
+            <div class="footer-section">
+                <h3>Metodologia</h3>
+                <p>✓ Do Básico ao Avançado</p>
+                <p>✓ Método Dinâmico e Acessível</p>
+                <p>✓ Reforço Escolar + Gramática</p>
+                <p>✓ Leitura, Redação e Concursos</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Aprenda Português Online. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5562982329803?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações!" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
+        💬
+    </a>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all items
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.pillar-card, .problem-card, .differential-item, .testimonial-card, .pricing-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
