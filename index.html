@@ -7,7 +7,7 @@
     <title>Aprenda Português Online - Aulas Personalizadas ao Vivo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -19,82 +19,131 @@
             --primary-purple: #6c5ce7;
             --primary-green: #00b286;
             --primary-dark: #2b3749;
-            --gradient: linear-gradient(135deg, #6c5ce7 0%, #00b286 100%);
-            --light-bg: #f8f9fa;
+            --gradient-bg: linear-gradient(135deg, #f5f7ff 0%, #e8f4f8 50%, #f0fdf4 100%);
+            --gradient-hero: linear-gradient(135deg, rgba(108, 92, 231, 0.08) 0%, rgba(0, 178, 134, 0.08) 100%);
+            --card-shadow: 0 4px 20px rgba(108, 92, 231, 0.08);
+            --card-shadow-hover: 0 8px 30px rgba(108, 92, 231, 0.15);
             --white: #ffffff;
-            --text-dark: #2b3749;
-            --text-gray: #5a6c7d;
+            --text-dark: #1a1f36;
+            --text-gray: #6b7280;
+            --light-bg: #f9fafb;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
+            background: var(--white);
         }
 
         h1, h2, h3, h4 {
-            font-family: 'Poppins', sans-serif;
             font-weight: 700;
             line-height: 1.2;
+            color: var(--text-dark);
         }
 
-        /* Header/Navbar */
+        /* Navbar */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(108, 92, 231, 0.08);
             z-index: 1000;
             transition: all 0.3s ease;
         }
 
-        .navbar.scrolled {
-            box-shadow: 0 2px 30px rgba(0,0,0,0.1);
-        }
-
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 2rem;
         }
 
-        .logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .logo-img {
+            height: 45px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-purple);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-green));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
         }
 
         .nav-cta {
-            background: var(--gradient);
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-green) 100%);
             color: white;
-            padding: 0.8rem 2rem;
+            padding: 0.8rem 1.8rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: inline-block;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.2);
+            white-space: nowrap;
         }
 
         .nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.3);
+            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.3);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
         }
 
         /* Hero Section */
         .hero {
-            background: var(--gradient);
-            padding: 140px 2rem 80px;
-            text-align: center;
+            background: var(--gradient-hero);
+            padding: 140px 2rem 100px;
             position: relative;
             overflow: hidden;
         }
@@ -102,86 +151,117 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="rgba(255,255,255,0.05)"></path></svg>') no-repeat bottom;
-            background-size: cover;
-            opacity: 0.5;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(0, 178, 134, 0.1) 100%);
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(0, 178, 134, 0.1) 0%, rgba(108, 92, 231, 0.1) 100%);
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, -30px) rotate(5deg); }
+            50% { transform: translate(-20px, 20px) rotate(-5deg); }
+            75% { transform: translate(20px, 10px) rotate(3deg); }
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
             position: relative;
             z-index: 1;
         }
 
-        .hero h1 {
-            color: white;
+        .hero-text h1 {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
             font-weight: 800;
             line-height: 1.1;
         }
 
-        .hero-subtitle {
-            color: rgba(255, 255, 255, 0.95);
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
-            font-weight: 400;
+        .hero-text h1 .highlight {
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .hero-highlight {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.3rem 0.8rem;
-            border-radius: 8px;
-            display: inline-block;
-            margin-bottom: 2rem;
-            color: white;
-            font-weight: 600;
-            font-size: 1.1rem;
+        .hero-subtitle {
+            color: var(--text-gray);
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
         }
 
         .cta-primary {
-            background: white;
-            color: var(--primary-purple);
-            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-green) 100%);
+            color: white;
+            padding: 1.2rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             display: inline-flex;
             align-items: center;
             gap: 0.8rem;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.25);
         }
 
         .cta-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            box-shadow: 0 12px 35px rgba(108, 92, 231, 0.35);
         }
 
-        .trust-badges {
-            margin-top: 3rem;
+        .hero-badges {
             display: flex;
-            justify-content: center;
-            gap: 3rem;
+            gap: 2rem;
+            margin-top: 2.5rem;
             flex-wrap: wrap;
         }
 
         .badge {
-            color: white;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            color: var(--text-gray);
+            font-size: 0.95rem;
             font-weight: 500;
         }
 
-        .badge-icon {
-            font-size: 1.5rem;
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-logo {
+            max-width: 100%;
+            filter: drop-shadow(0 10px 30px rgba(108, 92, 231, 0.15));
+            animation: float-gentle 6s ease-in-out infinite;
+        }
+
+        @keyframes float-gentle {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         /* Stats Section */
@@ -205,8 +285,9 @@
         .stat-card {
             padding: 2rem;
             border-radius: 15px;
-            background: var(--light-bg);
+            background: white;
             transition: transform 0.3s ease;
+            box-shadow: var(--card-shadow);
         }
 
         .stat-card:hover {
@@ -216,7 +297,7 @@
         .stat-number {
             font-size: 3rem;
             font-weight: 800;
-            background: var(--gradient);
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-green) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -228,10 +309,10 @@
             font-weight: 600;
         }
 
-        /* Problem Section */
-        .problem {
+        /* Features Section */
+        .features {
             padding: 5rem 2rem;
-            background: var(--light-bg);
+            background: var(--white);
         }
 
         .container {
@@ -246,20 +327,19 @@
 
         .section-tag {
             display: inline-block;
-            background: var(--gradient);
-            color: white;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(0, 178, 134, 0.1) 100%);
+            color: var(--primary-purple);
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
             font-weight: 600;
             margin-bottom: 1rem;
             font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .section-title {
             font-size: 2.8rem;
-            color: var(--text-dark);
             margin-bottom: 1rem;
         }
 
@@ -268,6 +348,54 @@
             color: var(--text-gray);
             max-width: 700px;
             margin: 0 auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(108, 92, 231, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(0, 178, 134, 0.1) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: 5rem 2rem;
+            background: var(--light-bg);
         }
 
         .problem-grid {
@@ -280,13 +408,13 @@
             background: white;
             padding: 2.5rem;
             border-radius: 20px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            box-shadow: var(--card-shadow);
             transition: all 0.3s ease;
         }
 
         .problem-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+            box-shadow: var(--card-shadow-hover);
         }
 
         .problem-icon {
@@ -295,7 +423,6 @@
         }
 
         .problem-card h3 {
-            color: var(--text-dark);
             margin-bottom: 1rem;
             font-size: 1.4rem;
         }
@@ -319,11 +446,12 @@
         }
 
         .pillar-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            background: white;
             padding: 2.5rem;
-            border-radius: 20px;
-            border: 2px solid transparent;
+            border-radius: 25px;
+            box-shadow: var(--card-shadow);
             transition: all 0.3s ease;
+            border: 2px solid transparent;
             position: relative;
             overflow: hidden;
         }
@@ -333,17 +461,17 @@
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            height: 5px;
-            background: var(--gradient);
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-purple) 0%, var(--primary-green) 100%);
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
 
         .pillar-card:hover {
-            border-color: var(--primary-purple);
-            transform: translateY(-8px);
-            box-shadow: 0 15px 50px rgba(108, 92, 231, 0.2);
+            transform: translateY(-10px);
+            box-shadow: var(--card-shadow-hover);
+            border-color: rgba(108, 92, 231, 0.2);
         }
 
         .pillar-card:hover::before {
@@ -351,18 +479,17 @@
         }
 
         .pillar-number {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
-            background: var(--gradient);
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-green) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             line-height: 1;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .pillar-card h3 {
-            color: var(--text-dark);
             margin-bottom: 1rem;
             font-size: 1.5rem;
         }
@@ -378,11 +505,12 @@
         }
 
         .pillar-features li {
-            padding: 0.6rem 0;
+            padding: 0.7rem 0;
             color: var(--text-gray);
             display: flex;
             align-items: start;
             gap: 0.8rem;
+            font-size: 0.95rem;
         }
 
         .pillar-features li::before {
@@ -396,7 +524,7 @@
         /* Differentials Section */
         .differentials {
             padding: 5rem 2rem;
-            background: var(--gradient);
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-green) 100%);
             color: white;
             position: relative;
             overflow: hidden;
@@ -467,7 +595,7 @@
             background: white;
             padding: 2.5rem;
             border-radius: 20px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            box-shadow: var(--card-shadow);
             position: relative;
         }
 
@@ -497,7 +625,7 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: var(--gradient);
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-green) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -507,7 +635,7 @@
         }
 
         .author-info h5 {
-            color: var(--text-dark);
+            font-size: 1.1rem;
             margin-bottom: 0.2rem;
         }
 
@@ -529,26 +657,27 @@
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2.5rem;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 3rem auto 0;
         }
 
         .pricing-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            background: white;
             padding: 3rem 2.5rem;
             border-radius: 25px;
             text-align: center;
-            border: 3px solid transparent;
+            box-shadow: var(--card-shadow);
             transition: all 0.3s ease;
             position: relative;
+            border: 2px solid transparent;
         }
 
         .pricing-card.featured {
             border-color: var(--primary-purple);
             transform: scale(1.05);
-            box-shadow: 0 15px 60px rgba(108, 92, 231, 0.3);
+            box-shadow: 0 15px 50px rgba(108, 92, 231, 0.2);
         }
 
         .pricing-badge {
@@ -556,18 +685,23 @@
             top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--gradient);
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-green) 100%);
             color: white;
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
         }
 
         .pricing-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            transform: translateY(-10px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .pricing-card.featured:hover {
+            transform: translateY(-10px) scale(1.05);
         }
 
         .pricing-duration {
@@ -580,7 +714,7 @@
         .pricing-price {
             font-size: 3.5rem;
             font-weight: 800;
-            background: var(--gradient);
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-green) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -590,7 +724,6 @@
         .pricing-description {
             color: var(--text-gray);
             margin-bottom: 2rem;
-            font-size: 0.95rem;
         }
 
         .pricing-features {
@@ -606,6 +739,7 @@
             align-items: start;
             gap: 0.8rem;
             border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 0.95rem;
         }
 
         .pricing-features li:last-child {
@@ -621,7 +755,7 @@
         }
 
         .pricing-cta {
-            background: var(--gradient);
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-green) 100%);
             color: white;
             padding: 1rem 2.5rem;
             border-radius: 50px;
@@ -629,37 +763,46 @@
             font-weight: 700;
             display: inline-block;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.2);
         }
 
         .pricing-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.3);
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.3);
         }
 
         /* CTA Section */
         .cta-section {
-            padding: 5rem 2rem;
-            background: var(--gradient);
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-green) 100%);
             text-align: center;
             color: white;
             position: relative;
             overflow: hidden;
         }
 
-        .cta-section::before {
+        .cta-section::before,
+        .cta-section::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: pulse 15s ease-in-out infinite;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+        .cta-section::before {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            right: -100px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .cta-section::after {
+            width: 300px;
+            height: 300px;
+            bottom: -80px;
+            left: -80px;
+            animation: float 25s ease-in-out infinite reverse;
         }
 
         .cta-content {
@@ -672,6 +815,7 @@
         .cta-section h2 {
             font-size: 3rem;
             margin-bottom: 1.5rem;
+            color: white;
         }
 
         .cta-section p {
@@ -699,16 +843,17 @@
             align-items: center;
             gap: 0.8rem;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
 
         .cta-button-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
         }
 
         .cta-button-secondary {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
             color: white;
             padding: 1.2rem 3rem;
             border-radius: 50px;
@@ -720,8 +865,7 @@
         }
 
         .cta-button-secondary:hover {
-            background: white;
-            color: var(--primary-purple);
+            background: rgba(255, 255, 255, 0.25);
         }
 
         /* FAQ Section */
@@ -736,15 +880,16 @@
         }
 
         .faq-item {
-            background: var(--light-bg);
+            background: white;
             margin-bottom: 1.5rem;
             border-radius: 15px;
             overflow: hidden;
             transition: all 0.3s ease;
+            box-shadow: var(--card-shadow);
         }
 
         .faq-item:hover {
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            box-shadow: var(--card-shadow-hover);
         }
 
         .faq-question {
@@ -763,12 +908,22 @@
         }
 
         .faq-icon {
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(0, 178, 134, 0.1) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
         }
 
         .faq-item.active .faq-icon {
             transform: rotate(45deg);
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-green) 100%);
+            color: white;
         }
 
         .faq-answer {
@@ -805,17 +960,13 @@
 
         .footer-section h3 {
             margin-bottom: 1.5rem;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
         }
 
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #6c5ce7 0%, #00b286 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .footer-logo-img {
+            max-width: 180px;
             margin-bottom: 1rem;
+            filter: brightness(0) invert(1);
         }
 
         .footer-section p {
@@ -845,8 +996,8 @@
         }
 
         .social-link {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
@@ -854,12 +1005,12 @@
             justify-content: center;
             text-decoration: none;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             transition: all 0.3s ease;
         }
 
         .social-link:hover {
-            background: var(--primary-green);
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-green) 100%);
             transform: translateY(-3px);
         }
 
@@ -875,115 +1026,98 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             background: #25D366;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 2rem;
             text-decoration: none;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
             z-index: 999;
             transition: all 0.3s ease;
-            animation: pulse-whatsapp 2s infinite;
-        }
-
-        @keyframes pulse-whatsapp {
-            0% {
-                box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            }
-            50% {
-                box-shadow: 0 5px 30px rgba(37, 211, 102, 0.6);
-                transform: scale(1.05);
-            }
-            100% {
-                box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            }
         }
 
         .whatsapp-float:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-icon {
+            width: 35px;
+            height: 35px;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+        @media (max-width: 968px) {
+            .nav-menu {
+                display: none;
             }
 
-            .hero-subtitle {
-                font-size: 1.1rem;
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-visual {
+                order: -1;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
             }
 
             .section-title {
                 font-size: 2rem;
             }
 
-            .nav-cta {
-                padding: 0.6rem 1.5rem;
-                font-size: 0.9rem;
-            }
-
-            .cta-primary {
-                padding: 1rem 2rem;
-                font-size: 1rem;
-            }
-
-            .trust-badges {
-                gap: 1.5rem;
-            }
-
-            .pillars-grid,
-            .differentials-grid,
-            .pricing-grid {
-                grid-template-columns: 1fr;
+            .cta-section h2 {
+                font-size: 2rem;
             }
 
             .pricing-card.featured {
                 transform: scale(1);
             }
 
-            .cta-section h2 {
-                font-size: 2rem;
-            }
-
-            .cta-section p {
-                font-size: 1.1rem;
-            }
-
             .cta-buttons {
                 flex-direction: column;
             }
+        }
+
+        @media (max-width: 640px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .nav-cta {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
 
             .whatsapp-float {
-                bottom: 20px;
-                right: 20px;
                 width: 55px;
                 height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-icon {
+                width: 30px;
+                height: 30px;
             }
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        /* Smooth Scroll */
         html {
             scroll-behavior: smooth;
         }
@@ -993,38 +1127,49 @@
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="logo">Aprenda Português Online</div>
+            <div class="logo-container">
+                <img src="logo.png" alt="Aprenda Português Online" class="logo-img">
+            </div>
+            <div class="nav-menu">
+                <a href="#pilares" class="nav-link">Metodologia</a>
+                <a href="#diferenciais" class="nav-link">Diferenciais</a>
+                <a href="#precos" class="nav-link">Planos</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </div>
             <a href="https://wa.me/5562982329803?text=Olá!%20Gostaria%20de%20agendar%20uma%20aula%20experimental%20gratuita!" class="nav-cta" target="_blank">
-                📱 Aula Experimental Grátis
+                Aula Experimental Grátis
             </a>
+            <button class="mobile-menu-toggle">☰</button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1 class="fade-in-up">Domine o Português com Aulas 100% ao Vivo e Personalizadas</h1>
-            <p class="hero-subtitle">Do básico ao avançado com método dinâmico que respeita seu ritmo de aprendizado</p>
-            <div class="hero-highlight">
-                ✨ Aulas individuais • Horários flexíveis • Resultados reais
+            <div class="hero-text">
+                <h1>Domine o <span class="highlight">Português</span> com Aulas 100% ao Vivo e Personalizadas</h1>
+                <p class="hero-subtitle">Do básico ao avançado com método dinâmico que respeita seu ritmo de aprendizado</p>
+                <a href="https://wa.me/5562982329803?text=Olá!%20Gostaria%20de%20agendar%20uma%20aula%20experimental%20gratuita!" class="cta-primary" target="_blank">
+                    <span>Agende Sua Aula Experimental</span>
+                    <span>→</span>
+                </a>
+                <div class="hero-badges">
+                    <div class="badge">
+                        <span>✓</span>
+                        <span>100% Personalizado</span>
+                    </div>
+                    <div class="badge">
+                        <span>✓</span>
+                        <span>Aulas ao Vivo</span>
+                    </div>
+                    <div class="badge">
+                        <span>✓</span>
+                        <span>Horários Flexíveis</span>
+                    </div>
+                </div>
             </div>
-            <a href="https://wa.me/5562982329803?text=Olá!%20Gostaria%20de%20agendar%20uma%20aula%20experimental%20gratuita!" class="cta-primary" target="_blank">
-                <span>📚 Agende Sua Aula Experimental</span>
-                <span style="font-size: 1.5rem;">→</span>
-            </a>
-            <div class="trust-badges">
-                <div class="badge">
-                    <span class="badge-icon">🎯</span>
-                    <span>100% Personalizado</span>
-                </div>
-                <div class="badge">
-                    <span class="badge-icon">🎥</span>
-                    <span>Aulas ao Vivo</span>
-                </div>
-                <div class="badge">
-                    <span class="badge-icon">⏰</span>
-                    <span>Horários Flexíveis</span>
-                </div>
+            <div class="hero-visual">
+                <img src="logo.png" alt="Aprenda Português Online" class="hero-logo">
             </div>
         </div>
     </section>
@@ -1085,7 +1230,7 @@
     </section>
 
     <!-- Pillars Section -->
-    <section class="pillars">
+    <section class="pillars" id="pilares">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Nossa Metodologia</span>
@@ -1141,7 +1286,7 @@
     </section>
 
     <!-- Differentials Section -->
-    <section class="differentials">
+    <section class="differentials" id="diferenciais">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title" style="color: white;">O Que Nos Torna Únicos</h2>
@@ -1232,7 +1377,7 @@
     </section>
 
     <!-- Pricing Section -->
-    <section class="pricing">
+    <section class="pricing" id="precos">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Investimento</span>
@@ -1270,7 +1415,7 @@
                     <a href="https://wa.me/5562982329803?text=Olá!%20Tenho%20interesse%20nas%20aulas%20de%201%20hora%20com%20materiais." class="pricing-cta" target="_blank">Escolher Este Plano</a>
                 </div>
             </div>
-            <p style="text-align: center; color: var(--text-gray); margin-top: 2rem; font-size: 0.95rem;">
+            <p style="text-align: center; color: var(--text-gray); margin-top: 2.5rem; font-size: 0.95rem;">
                 💳 Pagamento via PIX • 📄 Recibo fornecido • 🎁 Primeira aula experimental gratuita
             </p>
         </div>
@@ -1283,17 +1428,18 @@
             <p>Agende agora sua aula experimental gratuita e descubra como aulas personalizadas podem transformar seu aprendizado</p>
             <div class="cta-buttons">
                 <a href="https://wa.me/5562982329803?text=Olá!%20Gostaria%20de%20agendar%20minha%20aula%20experimental%20gratuita!" class="cta-button-primary" target="_blank">
-                    📚 Agendar Aula Experimental Grátis
+                    <span>Agendar Aula Experimental Grátis</span>
+                    <span>→</span>
                 </a>
                 <a href="mailto:aportuguesonline@gmail.com" class="cta-button-secondary">
-                    ✉️ Enviar E-mail
+                    Enviar E-mail
                 </a>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq">
+    <section class="faq" id="faq">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Dúvidas Frequentes</span>
@@ -1374,11 +1520,18 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <div class="footer-logo">Aprenda Português Online</div>
+                <img src="logo.png" alt="Aprenda Português Online" class="footer-logo-img">
                 <p>Aulas 100% ao vivo e personalizadas para você dominar o português do básico ao avançado.</p>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/aprenda_portugues_online/" class="social-link" target="_blank" title="Instagram">📷</a>
-                    <a href="https://www.facebook.com/profile.php?id=61571547343086" class="social-link" target="_blank" title="Facebook">📘</a>
+                    <a href="https://www.instagram.com/aprenda_portugues_online/" class="social-link" target="_blank" title="Instagram">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61571547343086" class="social-link" target="_blank" title="Facebook">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@aprendaportuguesonline" class="social-link" target="_blank" title="YouTube">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
                 </div>
             </div>
             <div class="footer-section">
@@ -1408,72 +1561,35 @@
 
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/5562982329803?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações!" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
-        💬
+        <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
     </a>
 
     <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
         // FAQ Accordion
         document.querySelectorAll('.faq-item').forEach(item => {
             const question = item.querySelector('.faq-question');
             question.addEventListener('click', () => {
                 const isActive = item.classList.contains('active');
-                
-                // Close all items
                 document.querySelectorAll('.faq-item').forEach(otherItem => {
                     otherItem.classList.remove('active');
                 });
-                
-                // Open clicked item if it wasn't active
                 if (!isActive) {
                     item.classList.add('active');
                 }
             });
         });
 
-        // Smooth scroll for anchor links
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
-        });
-
-        // Add fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.pillar-card, .problem-card, .differential-item, .testimonial-card, .pricing-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
         });
     </script>
 </body>
