@@ -70,8 +70,9 @@ document.documentElement.dataset.motion = 'full';
 
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--apo-font-sans);background:var(--apo-bg);color:var(--apo-text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;background:var(--apo-bg);width:100%;max-width:100%;overflow-x:hidden;overscroll-behavior-x:none}
+body{font-family:var(--apo-font-sans);background:var(--apo-bg);color:var(--apo-text);line-height:1.6;width:100%;max-width:100%;min-width:0;overflow-x:hidden;overscroll-behavior-x:none;-webkit-font-smoothing:antialiased}
+@supports(overflow:clip){html,body{overflow-x:clip}}
 ::-webkit-scrollbar{width:8px}
 ::-webkit-scrollbar-track{background:var(--apo-bg-soft)}
 ::-webkit-scrollbar-thumb{background:var(--apo-grad);border-radius:4px}
@@ -666,6 +667,13 @@ footer{background:var(--apo-navy);padding:72px 5% 32px;position:relative}
 /* STICKY WHATSAPP MOBILE */
 .sticky-wa{display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:998;background:var(--apo-grad-wa);color:#fff;padding:14px 28px;border-radius:50px;font-weight:700;font-size:0.92rem;text-decoration:none;box-shadow:0 8px 28px rgba(37,211,102,0.5);gap:8px;align-items:center;white-space:nowrap}
 
+/* VOLTAR AO TOPO */
+.back-to-top{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:997;width:44px;height:44px;border-radius:50%;border:1px solid rgba(107,78,255,.34);background:rgba(20,22,43,.88);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 24px rgba(20,22,43,.2);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(12px) scale(.9);transition:opacity .28s var(--apo-ease),transform .28s var(--apo-ease),visibility .28s;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.back-to-top.is-visible{opacity:.88;visibility:visible;pointer-events:auto;transform:none}
+.back-to-top:hover{opacity:1;transform:translateY(-3px);border-color:var(--apo-teal);background:var(--apo-navy);box-shadow:0 10px 28px rgba(20,22,43,.28)}
+.back-to-top:active{transform:translateY(0) scale(.94)}
+.back-to-top .material-symbols-rounded{font-size:22px}
+
 /* RESPONSIVE */
 @media(max-width:1024px){
   .plans-grid{grid-template-columns:1fr 1fr}
@@ -703,6 +711,7 @@ footer{background:var(--apo-navy);padding:72px 5% 32px;position:relative}
   .footer-grid{grid-template-columns:1fr}
   .navbar-cta{display:none}
   .sticky-wa{display:flex}
+  .back-to-top{right:max(16px,env(safe-area-inset-right));bottom:calc(86px + env(safe-area-inset-bottom));width:42px;height:42px}
   .hero-stats{gap:24px}
   .hero-stat-value{font-size:1.3rem}
   .final-trust{gap:18px}
@@ -722,6 +731,7 @@ footer{background:var(--apo-navy);padding:72px 5% 32px;position:relative}
 
 /* Resposta tátil dos cards em telas sem hover. */
 @media(hover:none), (pointer:coarse){
+  html,body{touch-action:pan-y pinch-zoom}
   .pillar-card,.forwho-card,.benefit-card,.plan-card,.combo-card,.pain-item,.diff-item,.btn{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
   .pillar-card:active,.benefit-card:active,.plan-card:active,.combo-card:active{transform:translateY(-3px) scale(.988);box-shadow:var(--apo-shadow-card)}
   .forwho-card:active{transform:translateY(-4px) scale(.988);box-shadow:0 14px 34px rgba(107,78,255,.18)}
@@ -1420,11 +1430,23 @@ footer{background:var(--apo-navy);padding:72px 5% 32px;position:relative}
   Aula experimental
 </a>
 
+<button class="back-to-top" id="backToTop" type="button" aria-label="Voltar ao início da página" title="Voltar ao início">
+  <span class="material-symbols-rounded" aria-hidden="true">arrow_upward</span>
+</button>
+
 <script>
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
+const backToTop = document.getElementById('backToTop');
+function updateScrollControls() {
   navbar.classList.toggle('scrolled', window.scrollY > 40);
-}, { passive: true });
+  backToTop.classList.toggle('is-visible', window.scrollY > Math.min(500, window.innerHeight * 0.65));
+}
+window.addEventListener('scroll', updateScrollControls, { passive: true });
+window.addEventListener('resize', updateScrollControls, { passive: true });
+backToTop.addEventListener('click', () => {
+  document.getElementById('inicio').scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+updateScrollControls();
 
 const revealElements = document.querySelectorAll('.fade-in');
 if ('IntersectionObserver' in window) {
