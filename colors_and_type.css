@@ -1,0 +1,49 @@
+/* ============================================
+   Aprenda Português Online — Design Tokens
+   Extraídos do Figma: Project-Figma-LP-Aprenda-Português-Online
+   ============================================ */
+
+:root{
+
+  /* ---- Cores base ---- */
+  --apo-purple: #6b4eff;
+  --apo-teal: #00c9a7;
+  --apo-navy: #1e2235;
+
+  --apo-text: #1e2235;
+  --apo-text-muted: #6b7280;
+  --apo-text-light: #9ca3af;
+
+  --apo-bg: #ffffff;
+  --apo-bg-soft: #f8f9ff;
+  --apo-dark-bg: #0f1120;
+
+  --apo-border-strong: rgba(107,78,255,0.18);
+
+  /* ---- Gradientes ---- */
+  --apo-grad: linear-gradient(135deg, var(--apo-purple) 0%, var(--apo-teal) 100%);
+  --apo-grad-soft: linear-gradient(135deg, rgba(107,78,255,0.08) 0%, rgba(0,201,167,0.08) 100%);
+  --apo-grad-wa: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+
+  --apo-grad-dark-hero:
+    radial-gradient(ellipse 1152px 720px at 80% 50%, rgba(0,201,167,0.12) 0%, rgba(0,201,167,0) 70%),
+    radial-gradient(ellipse 960px 840px at 10% 60%, rgba(107,78,255,0.18) 0%, rgba(107,78,255,0) 70%);
+
+  /* ---- Tipografia ---- */
+  --apo-font-sans: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --apo-font-serif: 'Lora', Georgia, serif;
+
+  /* ---- Sombras ---- */
+  --apo-shadow-card: 0 8px 32px rgba(30,34,53,0.12);
+  --apo-shadow-feature: 0 20px 60px rgba(107,78,255,0.18);
+
+  --apo-shadow-cta-purple: 0 8px 24px rgba(107,78,255,0.35);
+  --apo-shadow-cta-purple-hover: 0 12px 32px rgba(107,78,255,0.45);
+
+  --apo-shadow-cta-wa: 0 4px 10px rgba(37,211,102,0.3);
+  --apo-shadow-cta-wa-hover: 0 8px 20px rgba(37,211,102,0.4);
+
+  /* ---- Motion ---- */
+  --apo-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --apo-transition: all 0.3s var(--apo-ease);
+}
