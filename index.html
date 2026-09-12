@@ -744,6 +744,40 @@ footer{background:var(--apo-navy);padding:72px 5% 32px;position:relative}
   .btn:active{transform:translateY(1px) scale(.975)}
   .carousel-wrap{touch-action:pan-y}
 }
+
+/* Oferta de lançamento */
+.launch-offer{position:relative;z-index:1;margin:0 auto 32px;padding:30px;border:1px solid rgba(107,78,255,.24);border-radius:24px;background:linear-gradient(120deg,#f0edff,#f0fcf8);box-shadow:0 12px 32px rgba(107,78,255,.07)}
+.launch-top{display:flex;align-items:center;gap:28px;margin-bottom:24px}
+.launch-discount{flex-shrink:0;font-size:clamp(3.5rem,7vw,5rem);font-weight:800;line-height:1;letter-spacing:-.06em;color:var(--apo-purple)}
+.launch-discount span{font-size:.48em;letter-spacing:-.03em}
+.launch-kicker{font-size:.7rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#087966;display:block;margin-bottom:8px}
+.launch-offer h3{font-size:clamp(1.25rem,3vw,1.65rem);line-height:1.3;color:var(--apo-navy);margin:0}
+.launch-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.launch-fact{padding:16px;border-radius:14px;background:rgba(255,255,255,.85);border:1px solid rgba(107,78,255,.1)}
+.launch-fact .material-symbols-rounded{color:var(--apo-purple);font-size:22px;display:block;margin-bottom:8px}
+.launch-fact strong{display:block;color:var(--apo-navy);font-size:.95rem;margin-bottom:5px}
+.launch-fact small{display:block;color:#566075;font-size:.8rem;line-height:1.5}
+.launch-terms{font-size:.78rem;color:#566075;line-height:1.6;margin:16px 0 0}
+.launch-terms a{color:#5635c9;text-decoration:underline;text-underline-offset:3px;font-weight:700}
+.launch-price-label{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:20px 0 14px;font-size:.74rem;font-weight:700;color:#566075}
+.launch-price-label b{color:#5635c9;background:#ede8ff;border:1px solid #ddd3ff;border-radius:7px;padding:5px 8px;font-size:.72rem}
+.plan-card .plan-price-value{font-size:3.3rem}
+.launch-renewal{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:5px 12px;background:#f5f6fa;border-radius:10px;padding:10px 12px;margin:14px 0 10px;color:#566075;font-size:.74rem;line-height:1.5}
+.launch-renewal strong{color:var(--apo-navy);font-size:.9rem;white-space:nowrap}
+.plan-per-class{font-size:.75rem;line-height:1.5;margin-bottom:14px}
+.hero-launch{display:flex;position:relative;isolation:isolate;overflow:hidden;align-items:center;gap:16px;padding:17px 20px;margin:0 0 26px;border:1px solid rgba(0,201,167,.45);border-radius:16px;background:linear-gradient(110deg,rgba(107,78,255,.25),rgba(0,201,167,.12));color:#fff;text-decoration:none;max-width:560px;transition:transform .2s,border-color .2s}
+.hero-launch::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.12) 50%,transparent 80%);transform:translateX(-110%);animation:launchSweep 2.3s ease-out 2}
+.hero-launch:hover{border-color:var(--apo-teal);transform:translateY(-2px)}
+.hero-launch-number{font-size:2.35rem;font-weight:800;line-height:1;color:#55ebc6;letter-spacing:-.05em;flex-shrink:0}
+.hero-launch-copy{flex:1;min-width:0}
+.hero-launch-copy small{display:block;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:#ac9aff;font-weight:800;margin-bottom:5px}
+.hero-launch-copy strong{display:block;font-size:.92rem;line-height:1.4;color:#fff}
+.hero-launch-copy span{display:block;font-size:.72rem;color:#c7cedd;line-height:1.5;margin-top:3px}
+.hero-launch-arrow{color:#55ebc6;font-size:24px;flex-shrink:0}
+@keyframes launchSweep{to{transform:translateX(110%)}}
+@media(max-width:900px){.hero-content>.fade-in:first-child>.hero-launch{order:2;margin:0 0 20px;max-width:none;width:100%}}
+@media(max-width:600px){.launch-offer{padding:22px 18px;border-radius:20px}.launch-top{gap:18px;margin-bottom:20px}.launch-facts{grid-template-columns:1fr;gap:8px}.launch-fact{display:grid;grid-template-columns:24px 1fr;column-gap:12px;padding:12px 14px}.launch-fact .material-symbols-rounded{grid-row:1/3;margin:0;align-self:center}.launch-fact strong{font-size:.87rem;margin-bottom:2px}.launch-fact small{font-size:.77rem}.hero-launch{gap:12px;padding:15px}.hero-launch-number{font-size:2rem}.hero-launch-copy strong{font-size:.82rem}.hero-launch-copy span{font-size:.68rem}.launch-renewal{font-size:.75rem}.plan-card .plan-price-value{font-size:3.2rem}}
+@media(prefers-reduced-motion:reduce){.hero-launch::before{animation:none}.hero-launch{transition:none}}
 </style>
 <noscript><style>.fade-in{opacity:1;transform:none}.faq-answer{max-height:none}</style></noscript>
 </head>
@@ -802,6 +836,11 @@ footer{background:var(--apo-navy);padding:72px 5% 32px;position:relative}
       <div class="hero-badge"><div class="hero-badge-dot"></div>Aulas particulares ao vivo pelo Google Meet</div>
       <h1>Seu português, explicado do jeito que <span class="grad-text">realmente faz sentido.</span></h1>
       <p class="hero-sub">Aulas particulares de português, ao vivo e personalizadas para crianças, adolescentes e adultos. Gramática, redação, reforço escolar e preparação para concursos, com explicações adaptadas a cada objetivo.</p>
+      <a class="hero-launch" href="#planos" aria-label="Oferta de lançamento: 10% de desconto na primeira mensalidade. Conheça os planos e condições.">
+        <span class="hero-launch-number">−10%</span>
+        <span class="hero-launch-copy"><small>Lançamento</small><strong>Sua primeira mensalidade com desconto</strong><span>5 novos alunos · Confira os planos e condições</span></span>
+        <span class="material-symbols-rounded hero-launch-arrow" aria-hidden="true">arrow_forward</span>
+      </a>
       <div class="hero-guarantee">
         <span class="check" aria-hidden="true">✓</span>
         <span><strong>Primeira aula experimental gratuita</strong>, sem compromisso.</span>
@@ -1016,7 +1055,7 @@ footer{background:var(--apo-navy);padding:72px 5% 32px;position:relative}
       <div class="benefit-card fade-in" style="animation-delay:0.18s;">
         <div class="benefit-icon"><span class="material-symbols-rounded" aria-hidden="true">inventory_2</span></div>
         <h3 class="benefit-title">Materiais de apoio incluídos</h3>
-        <div class="benefit-desc">Slides, PDFs e exercícios interativos enviados via Google Sala de Aula após cada aula.</div>
+        <div class="benefit-desc">Materiais de apoio disponibilizados pelo Google Sala de Aula, conforme o plano contratado e o conteúdo trabalhado.</div>
       </div>
       <div class="benefit-card fade-in" style="animation-delay:0.24s;">
         <div class="benefit-icon"><span class="material-symbols-rounded" aria-hidden="true">sports_esports</span></div>
@@ -1065,7 +1104,7 @@ footer{background:var(--apo-navy);padding:72px 5% 32px;position:relative}
         </div>
         <div class="credibility-strip">
           <div class="credibility-icon"><span class="material-symbols-rounded" aria-hidden="true">lightbulb</span></div>
-          <div class="credibility-text"><strong>Uma aula por semana, com continuidade.</strong> O intervalo permite praticar o conteúdo e chegar ao próximo encontro com novas dúvidas e exemplos.</div>
+          <div class="credibility-text"><strong>Quatro encontros mensais, com continuidade.</strong> O intervalo permite praticar o conteúdo e chegar ao próximo encontro com novas dúvidas e exemplos.</div>
         </div>
       </div>
     </div>
@@ -1111,7 +1150,20 @@ footer{background:var(--apo-navy);padding:72px 5% 32px;position:relative}
     <div class="fade-in" style="text-align:center;max-width:680px;margin:0 auto 36px;position:relative;z-index:1">
       <div class="eyebrow center">Planos individuais</div>
       <h2 class="section-headline">Escolha o plano mais adequado ao seu objetivo.</h2>
-      <p class="section-sub" style="margin:0 auto;">Todos os planos incluem 4 aulas por mês, com uma aula por semana. O pagamento é mensal e não há fidelidade.</p>
+      <p class="section-sub" style="margin:0 auto;">Todos os planos incluem quatro aulas por mês, com datas combinadas previamente e frequência normalmente semanal. O pagamento é mensal e não há fidelidade.</p>
+    </div>
+
+    <div class="launch-offer fade-in" aria-labelledby="launch-offer-title">
+      <div class="launch-top">
+        <div class="launch-discount">10<span>%</span></div>
+        <div><span class="launch-kicker">Oferta de lançamento</span><h3 id="launch-offer-title">De desconto na<br>primeira mensalidade.</h3></div>
+      </div>
+      <div class="launch-facts">
+        <div class="launch-fact"><span class="material-symbols-rounded" aria-hidden="true">person_add</span><strong>5 novos alunos</strong><small>Limite total entre os três planos.</small></div>
+        <div class="launch-fact"><span class="material-symbols-rounded" aria-hidden="true">calendar_month</span><strong>30 dias de campanha</strong><small>A partir do lançamento ou até atingir o limite.</small></div>
+        <div class="launch-fact"><span class="material-symbols-rounded" aria-hidden="true">check_circle</span><strong>Confirmação pelo pagamento</strong><small>Para as cinco primeiras matrículas pagas.</small></div>
+      </div>
+      <p class="launch-terms">A oferta termina no prazo ou ao atingir o limite, o que ocorrer primeiro. Confirme a disponibilidade pelo WhatsApp antes de pagar. <a href="#faq-question-lancamento">Ver condições completas</a></p>
     </div>
 
     <div class="plans-grid fade-in">
@@ -1120,12 +1172,14 @@ footer{background:var(--apo-navy);padding:72px 5% 32px;position:relative}
         <div class="plan-header">
           <h3 class="plan-name">Essencial</h3>
           <div class="plan-tagline">Para quem quer aprender português geral com aulas mais curtas e objetivas.</div>
+          <div class="launch-price-label"><b>10% OFF</b><span>Primeira mensalidade</span></div>
           <div class="plan-price">
             <span class="plan-price-currency">R$</span>
-            <span class="plan-price-value">160</span>
-            <span class="plan-price-period">,00/mês</span>
+            <span class="plan-price-value">144</span>
+            <span class="plan-price-period">,00</span>
           </div>
-          <div class="plan-per-class">≈ R$ 40,00 por aula</div>
+          <div class="launch-renewal"><span>A partir da 2ª mensalidade</span><strong>R$ 160,00/mês</strong></div>
+          <div class="plan-per-class">4 aulas · R$ 36,00/aula no primeiro mês</div>
           <div class="plan-duration"><span class="material-symbols-rounded" aria-hidden="true">timer</span>45 minutos · 4 aulas/mês</div>
         </div>
         <div class="plan-features">
@@ -1146,12 +1200,14 @@ footer{background:var(--apo-navy);padding:72px 5% 32px;position:relative}
         <div class="plan-header">
           <h3 class="plan-name">Completo</h3>
           <div class="plan-tagline">Para quem quer aprofundar o aprendizado com aulas completas de português geral.</div>
+          <div class="launch-price-label"><b>10% OFF</b><span>Primeira mensalidade</span></div>
           <div class="plan-price">
             <span class="plan-price-currency">R$</span>
-            <span class="plan-price-value">180</span>
-            <span class="plan-price-period">,00/mês</span>
+            <span class="plan-price-value">162</span>
+            <span class="plan-price-period">,00</span>
           </div>
-          <div class="plan-per-class">≈ R$ 45,00 por aula</div>
+          <div class="launch-renewal"><span>A partir da 2ª mensalidade</span><strong>R$ 180,00/mês</strong></div>
+          <div class="plan-per-class">4 aulas · R$ 40,50/aula no primeiro mês</div>
           <div class="plan-duration"><span class="material-symbols-rounded" aria-hidden="true">timer</span>1 hora · 4 aulas/mês</div>
         </div>
         <div class="plan-features">
@@ -1171,12 +1227,14 @@ footer{background:var(--apo-navy);padding:72px 5% 32px;position:relative}
         <div class="plan-header">
           <h3 class="plan-name">Redação</h3>
           <div class="plan-tagline">Para quem quer desenvolver habilidades específicas de escrita com foco total em redação.</div>
+          <div class="launch-price-label"><b>10% OFF</b><span>Primeira mensalidade</span></div>
           <div class="plan-price">
             <span class="plan-price-currency">R$</span>
-            <span class="plan-price-value">180</span>
-            <span class="plan-price-period">,00/mês</span>
+            <span class="plan-price-value">162</span>
+            <span class="plan-price-period">,00</span>
           </div>
-          <div class="plan-per-class">≈ R$ 45,00 por aula</div>
+          <div class="launch-renewal"><span>A partir da 2ª mensalidade</span><strong>R$ 180,00/mês</strong></div>
+          <div class="plan-per-class">4 aulas · R$ 40,50/aula no primeiro mês</div>
           <div class="plan-duration"><span class="material-symbols-rounded" aria-hidden="true">timer</span>1 hora · 4 aulas/mês</div>
         </div>
         <div class="plan-features">
@@ -1194,81 +1252,6 @@ footer{background:var(--apo-navy);padding:72px 5% 32px;position:relative}
     </div>
 
     <p class="plan-note">Pagamento mensal via PIX, sem fidelidade. Em caso de dúvida sobre o plano mais adequado, converse com a professora pelo WhatsApp.</p>
-  </div>
-</section>
-
-<!-- COMBOS -->
-<section class="combos-section">
-  <div class="container">
-    <div class="fade-in" style="text-align:center;max-width:680px;margin:0 auto;">
-      <div class="eyebrow center">Combos com dois conteúdos</div>
-      <h2 class="section-headline">Combine os dois e evolua mais rápido.</h2>
-      <p class="section-sub" style="margin:0 auto;">O conteúdo de português geral pode ser praticado na redação. São 4 aulas por mês, alternando Português Geral e Redação a cada semana.</p>
-    </div>
-    <div class="combos-grid fade-in">
-      <!-- COMBO 1: Essencial + Redação -->
-      <div class="combo-card">
-        <div class="combo-header">
-          <span class="combo-save">Economize R$ 20</span>
-          <h3>Essencial + Redação</h3>
-          <div class="combo-header-sub">Português Geral de 45 minutos e Redação de 1 hora</div>
-        </div>
-        <div class="combo-body">
-          <div class="combo-comp-title">Composição mensal</div>
-          <ul class="combo-comp-list">
-            <li><span class="check-mini">✓</span>2 aulas de Português Geral · 45 min</li>
-            <li><span class="check-mini">✓</span>2 aulas de Redação · 1 hora</li>
-          </ul>
-          <div class="combo-comp-title">Cronograma semanal</div>
-          <div class="combo-schedule">
-            <div class="combo-week"><span class="combo-week-label">Semana 1</span><span class="combo-week-info">Português Geral · 45 min</span></div>
-            <div class="combo-week"><span class="combo-week-label">Semana 2</span><span class="combo-week-info">Redação · 1 hora</span></div>
-            <div class="combo-week"><span class="combo-week-label">Semana 3</span><span class="combo-week-info">Português Geral · 45 min</span></div>
-            <div class="combo-week"><span class="combo-week-label">Semana 4</span><span class="combo-week-info">Redação · 1 hora</span></div>
-          </div>
-          <div class="combo-pricing">
-            <div class="combo-pricing-left">
-              <div class="combo-price-orig">Separados: R$ 340,00/mês</div>
-              <div class="combo-price-new">R$ 320,00<span style="font-size:1rem;color:var(--apo-text-muted);font-weight:500;-webkit-text-fill-color:var(--apo-text-muted)">/mês</span></div>
-            </div>
-            <div class="combo-economy">Você economiza<br>R$ 20,00/mês</div>
-          </div>
-          <a href="https://wa.me/556282329803?text=Ol%C3%A1%2C%20Vivienne%21%20Quero%20saber%20mais%20sobre%20o%20Combo%20Essencial%20e%20Reda%C3%A7%C3%A3o." class="btn btn-primary" style="width:100%">Conversar sobre este combo</a>
-        </div>
-      </div>
-
-      <!-- COMBO 2: Completo + Redação (best) -->
-      <div class="combo-card best">
-        <div class="combo-header">
-          <span class="combo-save">Economize R$ 20</span>
-          <h3>Completo + Redação</h3>
-          <div class="combo-header-sub">Aulas de 1 hora de Português Geral e Redação</div>
-        </div>
-        <div class="combo-body">
-          <div class="combo-comp-title">Composição mensal</div>
-          <ul class="combo-comp-list">
-            <li><span class="check-mini">✓</span>2 aulas de Português Geral · 1 hora</li>
-            <li><span class="check-mini">✓</span>2 aulas de Redação · 1 hora</li>
-          </ul>
-          <div class="combo-comp-title">Cronograma semanal</div>
-          <div class="combo-schedule">
-            <div class="combo-week"><span class="combo-week-label">Semana 1</span><span class="combo-week-info">Português Geral · 1 hora</span></div>
-            <div class="combo-week"><span class="combo-week-label">Semana 2</span><span class="combo-week-info">Redação · 1 hora</span></div>
-            <div class="combo-week"><span class="combo-week-label">Semana 3</span><span class="combo-week-info">Português Geral · 1 hora</span></div>
-            <div class="combo-week"><span class="combo-week-label">Semana 4</span><span class="combo-week-info">Redação · 1 hora</span></div>
-          </div>
-          <div class="combo-pricing">
-            <div class="combo-pricing-left">
-              <div class="combo-price-orig">Separados: R$ 360,00/mês</div>
-              <div class="combo-price-new">R$ 340,00<span style="font-size:1rem;color:var(--apo-text-muted);font-weight:500;-webkit-text-fill-color:var(--apo-text-muted)">/mês</span></div>
-            </div>
-            <div class="combo-economy">Você economiza<br>R$ 20,00/mês</div>
-          </div>
-          <a href="https://wa.me/556282329803?text=Ol%C3%A1%2C%20Vivienne%21%20Quero%20saber%20mais%20sobre%20o%20Combo%20Completo%20e%20Reda%C3%A7%C3%A3o." class="btn btn-primary" style="width:100%">Conversar sobre este combo</a>
-        </div>
-      </div>
-    </div>
-    <p class="plan-note" style="margin-top:40px">Nos combos, as semanas alternam entre Português Geral e Redação, conforme o cronograma apresentado em cada opção.</p>
   </div>
 </section>
 
@@ -1301,6 +1284,10 @@ footer{background:var(--apo-navy);padding:72px 5% 32px;position:relative}
     </div>
     <div class="faq-list">
       <article class="faq-item fade-in">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-lancamento" id="faq-question-lancamento"><span>Como funciona o desconto de lançamento?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+        <div class="faq-answer" id="faq-answer-lancamento" role="region" aria-labelledby="faq-question-lancamento"><div class="faq-answer-inner">O desconto de 10% vale somente na primeira mensalidade dos cinco primeiros novos alunos com matrícula confirmada pelo pagamento, somando todos os planos. O Essencial fica por R$ 144,00 na primeira mensalidade e R$ 160,00 por mês a partir da segunda. O Completo e o Redação ficam por R$ 162,00 na primeira mensalidade e R$ 180,00 por mês a partir da segunda. A campanha dura 30 dias a partir do lançamento ou até completar as cinco matrículas, o que ocorrer primeiro. Agendar ou participar da aula experimental não reserva o desconto. Confirme a disponibilidade da oferta e dos horários com a professora antes de pagar. A aula experimental continua gratuita e não há fidelidade.</div></div>
+      </article>
+      <article class="faq-item fade-in">
         <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-1" id="faq-question-1"><span>Como funciona a aula experimental gratuita?</span><span class="faq-icon" aria-hidden="true">+</span></button>
         <div class="faq-answer" id="faq-answer-1" role="region" aria-labelledby="faq-question-1"><div class="faq-answer-inner">Antes da aula, informe pelo WhatsApp qual dificuldade ou objetivo deseja trabalhar. O encontro dura 30 minutos, acontece ao vivo pelo Google Meet e inclui explicação e prática. Depois, é possível conhecer os planos, sem obrigação de continuar.</div></div>
       </article>
@@ -1313,8 +1300,8 @@ footer{background:var(--apo-navy);padding:72px 5% 32px;position:relative}
         <div class="faq-answer" id="faq-answer-3" role="region" aria-labelledby="faq-question-3"><div class="faq-answer-inner"><strong>Essencial</strong> oferece aulas de 45 minutos de português geral. <strong>Completo</strong> oferece aulas de 1 hora de português geral, com mais tempo para prática e dúvidas. <strong>Redação</strong> oferece aulas de 1 hora focadas em escrita, produção textual e preparação para concursos ou vestibulares. Todos incluem 4 aulas por mês.</div></div>
       </article>
       <article class="faq-item fade-in">
-        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-4" id="faq-question-4"><span>Como funcionam os combos?</span><span class="faq-icon" aria-hidden="true">+</span></button>
-        <div class="faq-answer" id="faq-answer-4" role="region" aria-labelledby="faq-question-4"><div class="faq-answer-inner">Nos combos, as semanas alternam entre Português Geral e Redação. São 4 aulas por mês, conforme o cronograma de cada opção. Os valores apresentados representam uma economia de R$ 20 por mês em comparação com a contratação separada dos dois planos.</div></div>
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-calendario" id="faq-question-calendario"><span>Como funcionam os meses com cinco semanas?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+        <div class="faq-answer" id="faq-answer-calendario" role="region" aria-labelledby="faq-question-calendario"><div class="faq-answer-inner">Cada plano inclui quatro aulas por mês, com as datas combinadas previamente. Quando o dia habitual da aula ocorrer cinco vezes no mês, a quinta ocorrência não gera uma aula extra automática. Essa data pode ser usada para reposições, conforme disponibilidade e a regra de remarcação. Os feriados são considerados no planejamento das quatro datas.</div></div>
       </article>
       <article class="faq-item fade-in">
         <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-5" id="faq-question-5"><span>Como acontecem as aulas on-line?</span><span class="faq-icon" aria-hidden="true">+</span></button>
@@ -1322,7 +1309,7 @@ footer{background:var(--apo-navy);padding:72px 5% 32px;position:relative}
       </article>
       <article class="faq-item fade-in">
         <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-6" id="faq-question-6"><span>O material está incluído?</span><span class="faq-icon" aria-hidden="true">+</span></button>
-        <div class="faq-answer" id="faq-answer-6" role="region" aria-labelledby="faq-question-6"><div class="faq-answer-inner">Sim. Slides, PDFs e exercícios interativos são disponibilizados pelo Google Sala de Aula de acordo com o conteúdo trabalhado.</div></div>
+        <div class="faq-answer" id="faq-answer-6" role="region" aria-labelledby="faq-question-6"><div class="faq-answer-inner">Sim. Os materiais são disponibilizados pelo Google Sala de Aula, conforme o plano contratado e o conteúdo trabalhado. O Essencial inclui exercícios e atividades complementares. O Completo e o Redação incluem também slides. Todos os planos mantêm o feedback escrito após cada aula.</div></div>
       </article>
       <article class="faq-item fade-in">
         <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-7" id="faq-question-7"><span>O que acontece se eu precisar faltar?</span><span class="faq-icon" aria-hidden="true">+</span></button>
@@ -1396,7 +1383,6 @@ footer{background:var(--apo-navy);padding:72px 5% 32px;position:relative}
           <li><a href="#planos">Plano Essencial</a></li>
           <li><a href="#planos">Plano Completo</a></li>
           <li><a href="#planos">Plano Redação</a></li>
-          <li><a href="#planos">Combos</a></li>
         </ul>
       </div>
       <div>
