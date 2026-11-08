@@ -173,6 +173,14 @@ html{scroll-padding-top:120px}
 .pilula a::before{content:"";position:absolute;left:12px;right:12px;bottom:7px;height:.55em;border-radius:.2em .5em .2em .6em;background:var(--mt-verde);transform:scaleX(0) rotate(-1.5deg);transform-origin:left;transition:transform .35s cubic-bezier(.6,.05,.2,1);z-index:-1}
 .pilula a[data-cor="roxo"]::before{background:var(--mt-roxo)}
 .pilula li{position:relative;z-index:0}
+.menu-btn{display:none;place-items:center;width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(43,55,73,.18);background:#fff;cursor:pointer;padding:0;flex:none}
+.menu-btn span{display:block;width:20px;height:2.5px;border-radius:2px;background:var(--marinho);transition:transform .3s, opacity .2s;grid-area:1/1}
+.menu-btn span:nth-child(1){transform:translateY(-6px)}
+.menu-btn span:nth-child(3){transform:translateY(6px)}
+.menu-aberto .menu-btn span:nth-child(1){transform:rotate(45deg)}
+.menu-aberto .menu-btn span:nth-child(2){opacity:0}
+.menu-aberto .menu-btn span:nth-child(3){transform:rotate(-45deg)}
+@keyframes abreMenu{from{opacity:0;transform:translateY(-8px)}}
 .pilula a:hover,.pilula a.ativo,.pilula a:focus-visible{color:var(--marinho)}
 .pilula a:hover::before,.pilula a.ativo::before,.pilula a:focus-visible::before{transform:scaleX(1) rotate(-1.5deg)}
 .pilula a.ativo{font-weight:600}
@@ -566,10 +574,14 @@ h1{font-weight:700;font-size:clamp(36px,4.3vw,62px);line-height:1.04;letter-spac
 
 /* ---------- responsivo ---------- */
 @media (max-width: 960px){
-  .nav{flex-wrap:wrap;row-gap:8px}
-  .pilula{order:3;width:100%;overflow-x:auto;scrollbar-width:none;justify-content:flex-start}
-  .pilula::-webkit-scrollbar{display:none}
-  .pilula a{white-space:nowrap;padding:6px 12px;font-size:13.5px}
+  .barra-nav{position:relative}
+  .nav .zap{margin-left:auto}
+  .menu-btn{display:grid}
+  .pilula{display:none;position:absolute;top:calc(100% + 6px);left:var(--g);right:var(--g);flex-direction:column;gap:2px;border-radius:20px;padding:10px;font-size:17px;
+    box-shadow:0 24px 40px -18px rgba(43,55,73,.45)}
+  .menu-aberto .pilula{display:flex}
+  .pilula a{padding:13px 16px;border-radius:12px}
+  .pilula a::before{left:14px;right:auto;width:calc(100% - 28px);max-width:9em;bottom:11px}
   .rolou .nav .logo{width:110px}
   .hero::after{display:none}
   .hero-grid{grid-template-columns:1fr}
@@ -593,9 +605,9 @@ h1{font-weight:700;font-size:clamp(36px,4.3vw,62px);line-height:1.04;letter-spac
   .rascunho{width:74%;padding-left:42px}
   .polaroid{width:70%;right:0}
   .mesa .postit.menta{width:150px}
-  .mesa .postit.lilas{width:140px;left:auto;right:0;top:auto;bottom:0}
+  .mesa .postit.lilas{width:122px;left:0;right:auto;top:42%;bottom:auto}
   .rascunho{width:64% !important;left:0 !important}
-  .mesa{height:570px}
+  .mesa{height:650px}
   .postit .grande{font-size:28px}
   .folha-c{padding:46px 22px 30px 54px}
   .folha-c .numero{right:14px;top:26px;width:62px;height:62px;font-size:34px}
@@ -610,8 +622,11 @@ h1{font-weight:700;font-size:clamp(36px,4.3vw,62px);line-height:1.04;letter-spac
   .dor:nth-child(5){grid-column:1/-1;width:50%;justify-self:center}
   .painel{grid-template-columns:1fr}
   .painel svg{width:96px;height:100px;order:-1}
-  .abas-tab{padding-left:8px;overflow-x:auto}
-  .abas-tab button{padding:10px 14px 12px;font-size:14px;white-space:nowrap}
+  .abas-tab{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:0 4px}
+  .abas-tab button{padding:9px 4px 11px;font-size:13.5px;text-align:center}
+  .abas-tab button small{font-size:8.5px;letter-spacing:.02em}
+  .lista{transform:rotate(.6deg);margin:0 4px}
+  .ficha .tag{right:-2px;width:118px;font-size:19px}
   .retrato{max-width:380px}
   .pratica{grid-template-columns:repeat(2,1fr)}
   .fichas{grid-template-columns:1fr;max-width:440px;margin-left:auto;margin-right:auto;gap:44px}
@@ -620,7 +635,7 @@ h1{font-weight:700;font-size:clamp(36px,4.3vw,62px);line-height:1.04;letter-spac
   .cartao-d.c2,.cartao-d.c4{margin-top:0}
   .faq-lado{position:static}
   .rodape{grid-template-columns:1fr 1fr}
-  .asset{width:64px !important}
+  .asset{display:none !important}
   .a-hero-til,.a-faq,.a-final-acento{display:none}
   .a-aula{top:auto;bottom:40px}
   .a-prof{top:20px}
@@ -650,11 +665,11 @@ h1{font-weight:700;font-size:clamp(36px,4.3vw,62px);line-height:1.04;letter-spac
 /* celular: topo mais baixo (a pílula some ao rolar para baixo e volta ao subir) e sem desfoque pesado */
 @media (max-width: 960px){
   .barra-nav{background:var(--papel);-webkit-backdrop-filter:none;backdrop-filter:none}
-  .pilula{max-height:56px;transition:max-height .3s, opacity .25s, padding .3s, margin .3s}
-  .desce .pilula{max-height:0;opacity:0;padding-top:0;padding-bottom:0;border-width:0;margin-top:-8px}
 }
 /* ===== celular e touch: desempenho ===== */
 @media (max-width: 960px){
+  html,body{overflow-x:hidden}
+  body{position:relative;touch-action:pan-y pinch-zoom}
   .topo-fixo{position:fixed;left:0;right:0;top:0}
   body{padding-top:var(--topo-h,170px)}
   html{scroll-padding-top:120px}
@@ -694,7 +709,7 @@ h1{font-weight:700;font-size:clamp(36px,4.3vw,62px);line-height:1.04;letter-spac
       <a class="logo" href="#" aria-label="Aprenda Português Online, início">
         <img src="img/logo-nav.svg" width="835" height="390" alt="">
       </a>
-      <ul class="pilula">
+      <ul class="pilula" id="menu-principal">
         <li><a href="#aula" data-cor="verde">Aula grátis</a></li>
         <li><a href="#metodologia" data-cor="roxo">Metodologia</a></li>
         <li><a href="#professora" data-cor="verde">Professora</a></li>
@@ -703,6 +718,7 @@ h1{font-weight:700;font-size:clamp(36px,4.3vw,62px);line-height:1.04;letter-spac
         <li><a href="#faq" data-cor="roxo">Dúvidas</a></li>
       </ul>
       <a class="zap" href="https://wa.me/556282329803?text=Ol%C3%A1%2C%20Vivienne%21%20Quero%20agendar%20uma%20aula%20experimental." target="_blank" rel="noopener">WhatsApp</a>
+      <button type="button" class="menu-btn" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu"><span></span><span></span><span></span></button>
     </nav>
   </div>
 </div>
@@ -738,7 +754,7 @@ h1{font-weight:700;font-size:clamp(36px,4.3vw,62px);line-height:1.04;letter-spac
       <div class="rascunho" aria-label="Exemplo de correção: 'Fazem dois anos' vira 'Faz dois anos' e 'Vou a escola' ganha crase">
         <p class="titulo">Redação · correção</p>
         <p><span class="err">Fazem<svg viewBox="0 0 100 30" preserveAspectRatio="none" class="desenha" aria-hidden="true"><path class="traco" stroke="#6C5CE7" stroke-width="3" d="M2 18 C 30 12, 60 20, 98 10"/></svg><span class="cor" data-escreve>Faz</span></span> dois anos que estudo.</p>
-        <p>Amanhã vou <span class="crase">a<svg viewBox="0 0 10 8" class="desenha" aria-hidden="true"><path class="traco" stroke="#00B286" stroke-width="2.2" d="M2 1.5 L 7.5 6.5"/></svg></span> escola cedo.</p>
+        <p>Amanhã vou <span class="err">a<svg viewBox="0 0 100 30" preserveAspectRatio="none" class="desenha" aria-hidden="true"><path class="traco" stroke="#6C5CE7" stroke-width="3" d="M2 18 C 30 12, 60 20, 98 10"/></svg><span class="cor" data-escreve>à</span></span> escola cedo.</p>
         <span class="ok" data-escreve>ótimo!</span>
       </div>
 
@@ -1006,7 +1022,7 @@ h1{font-weight:700;font-size:clamp(36px,4.3vw,62px);line-height:1.04;letter-spac
   </div>
 </section>
 
-<div class="recorte papel" aria-hidden="true"><span>✂</span></div>
+<div class="recorte papel" aria-hidden="true"></div>
 
 <!-- ================= PLANOS ================= -->
 <section class="planos papel" id="planos" aria-labelledby="t-planos">
@@ -1222,6 +1238,16 @@ h1{font-weight:700;font-size:clamp(36px,4.3vw,62px);line-height:1.04;letter-spac
   }
   medeTopo(); addEventListener('resize', medeTopo); addEventListener('load', medeTopo);
   if (document.fonts) document.fonts.ready.then(medeTopo);
+  // menu hambúrguer (celular)
+  var btnMenu = document.querySelector('.menu-btn');
+  function menu(abrir){
+    document.documentElement.classList.toggle('menu-aberto', abrir);
+    btnMenu.setAttribute('aria-expanded', abrir); btnMenu.setAttribute('aria-label', abrir ? 'Fechar menu' : 'Abrir menu');
+  }
+  btnMenu.addEventListener('click', function(e){ e.stopPropagation(); menu(!document.documentElement.classList.contains('menu-aberto')); });
+  document.querySelectorAll('.pilula a').forEach(function(a){ a.addEventListener('click', function(){ menu(false); }); });
+  document.addEventListener('click', function(e){ if (!e.target.closest('.pilula')) menu(false); });
+  addEventListener('keydown', function(e){ if (e.key === 'Escape') menu(false); });
   // celular: esconde a pílula ao descer, mostra ao subir
   var ultimoY = scrollY;
   addEventListener('scroll', function(){
@@ -1264,7 +1290,6 @@ h1{font-weight:700;font-size:clamp(36px,4.3vw,62px);line-height:1.04;letter-spac
       // correção da professora: risca, escreve, acentua
       .add(desenha('.err .traco', { duration: .5 }), 2.1)
       .from('.rascunho .cor', { clipPath: 'inset(0 100% 0 0)', duration: .6, ease: 'none' }, 2.55)
-      .add(desenha('.crase .traco', { duration: .3 }), 3.1)
       .from('.rascunho .ok', { clipPath: 'inset(0 100% 0 0)', duration: .6, ease: 'none' }, 3.4);
 
     // post-its: arrastar (desktop) e leve balanço com o mouse
