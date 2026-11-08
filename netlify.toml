@@ -35,3 +35,10 @@
   from = "/bio"
   to = "/links/?utm_source=instagram&utm_medium=bio"
   status = 302
+
+# Páginas internas (calendários de conteúdo): fora do Google e sem cache longo.
+[[headers]]
+  for = "/plano-*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+    Cache-Control = "public, max-age=0, must-revalidate"
