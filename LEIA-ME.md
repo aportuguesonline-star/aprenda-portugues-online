@@ -7,7 +7,7 @@ Página única (`index.html`) com imagens em `img/`. Não precisa de build.
 2. No Netlify: *Add new site → Import from Git*, escolha o repositório. Não há comando de build; a pasta publicada é a raiz (`netlify.toml` já diz isso).
 
 ## Endereço do site
-O endereço já está preenchido (`aprendaportuguesonline.netlify.app`). Se um dia usar domínio próprio, troque-o nas 5 linhas do `<head>` do `index.html`.
+Domínio: **aprendaptonline.com.br** (registrado no registro.br, DNS no Netlify). O endereço antigo `aprendaportuguesonline.netlify.app` redireciona sozinho para ele. Atalho da bio do Instagram: **aprendaptonline.com.br/bio** (configurado no `netlify.toml`). Se trocar de domínio, atualize as meta tags no `<head>` do `index.html` e do `links/index.html`.
 
 ## Configurar (bloco `window.APO` no `<head>` do index.html)
 - `ga4`: ID do Google Analytics 4 (`G-XXXXXXX`).
