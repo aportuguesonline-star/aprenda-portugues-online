@@ -29,3 +29,9 @@
   for = "/js/*"
   [headers.values]
     Cache-Control = "public, max-age=2592000"
+
+# Atalho curto para a bio do Instagram: leva à página de links já marcando a origem.
+[[redirects]]
+  from = "/bio"
+  to = "/links/?utm_source=instagram&utm_medium=bio"
+  status = 302
