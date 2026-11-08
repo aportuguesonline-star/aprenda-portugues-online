@@ -1,0 +1,26 @@
+# Site estático: publica a própria pasta, sem build.
+[build]
+  publish = "."
+
+# Imagens e ícones mudam pouco: cache longo no navegador.
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/*.(svg|png|jpg)"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# A página em si: sempre revalida, para mudanças de preço/oferta aparecerem na hora.
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
